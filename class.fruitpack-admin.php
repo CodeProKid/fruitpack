@@ -20,6 +20,9 @@ class Fruitpack_Admin {
 			echo '<div class="fruit-pack-module-wrapper">';
 				echo FruitPack::get_modules();
 			echo '</div>';
+			echo '<div class="fruit-pack-sync-button">';
+				submit_button( 'Sync Modules' );
+			echo '</div>';
 		echo '</div>';
 
 	}

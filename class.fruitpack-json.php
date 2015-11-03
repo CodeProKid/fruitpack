@@ -15,6 +15,13 @@ class Fruitpack_Json {
 		}
 	}
 
+	public static function sync_json() {
+
+		$fileContent = file_get_contents( FRUITPACK__JSON_FULL_PATH );
+		update_option( 'fruit-pack-active-modules', json_decode( $fileContent ) );
+		
+	}
+
 }
 
 new Fruitpack_Json;

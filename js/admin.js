@@ -11,7 +11,8 @@ var Save = ( function($) {
 				url: ajaxurl,
 				beforeSend: function() {
 					$(e).addClass('working');
-				}, success: function() {
+				}, 
+				success: function() {
 					$(e).removeClass('working').toggleClass('active');
 					if ( $(e).hasClass('active') ) {
 						var txt = 'Deactivate Module';
@@ -44,6 +45,40 @@ var Save = ( function($) {
   return save;
 })(jQuery);
 
+var Sync = ( function($) {
+	var sync = {
+		ajaxHandler: function() {
+			$.ajax({
+				type: 'GET',
+				data: {
+					action: 'sync_modules',
+				},
+				dataType: 'json',
+				url: ajaxurl,
+				beforeSend: function() {
+					$('.fruit-pack-sync-button .submit').append('<i class="dashicons dashicons-update"></i>');
+				},
+				success: function() {
+					window.location.reload();
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+          console.log( jqXHR + " :: " + textStatus + " :: " + errorThrown );
+        }
+			});
+		},
+		init: function() {
+			var self = this;
+			$(document).ready(function() {
+				$('.fruit-pack-sync-button .button').on('click', function() {
+					self.ajaxHandler();
+				});
+			});
+		}
+	}
+	return sync;
+})(jQuery);
+
 (function() {
 	Save.init();
+	Sync.init();
 })();

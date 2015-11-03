@@ -25,4 +25,18 @@ function save_fruitpack_options() {
 	} else {
 		die( 'Get out of here sucka' );
 	}
+
+}
+
+function sync_modules() {
+
+	if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
+
+		Fruitpack_Json::sync_json();
+
+		die();
+	} else {
+		die( 'Get out of here sucka' );
+	}
+
 }

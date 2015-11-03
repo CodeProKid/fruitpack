@@ -1,3 +1,18 @@
+.fruit-pack-module-wrapper {
+	clear: both;
+	padding: 20px 0;
+	*zoom: 1;
+}
+
+.fruit-pack-module-wrapper:before, .fruit-pack-module-wrapper:after {
+	content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.fruit-pack-module-wrapper:after {
+	clear: both;
+}
+
 .fruit-pack-module {
 	width: 22.5%;
 	float: left;
@@ -66,4 +81,15 @@
 
 .fruit-pack-module__action i {
 	margin-right: 5px;
+}
+
+.fruit-pack-sync-button {
+	clear: both;
+}
+
+.fruit-pack-sync-button .dashicons {
+	-wekbit-animation: rotation 2s infinite linear;
+	animation: rotation 2s infinite linear;
+	margin-left: 3px;
+	margin-top: 5px;
 }
