@@ -6,6 +6,7 @@ class Fruitpack_Admin {
 
 		add_action( 'admin_menu', array( $this, 'register_options_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueues' ) );
+		self::setup_settings_page();
 
 	}
 
@@ -24,6 +25,107 @@ class Fruitpack_Admin {
 				submit_button( 'Sync Modules' );
 			echo '</div>';
 		echo '</div>';
+
+	}
+
+	public static function setup_settings_page() {
+
+		if( function_exists('acf_add_options_page') ) {
+			acf_add_options_sub_page(array(
+        'page_title'  => 'Fruit Pack Settings',
+        'menu_title'  => 'Fruit Pack Settings',
+        'parent_slug' => 'plugins.php',
+      ));
+    }
+
+    if( function_exists('acf_add_local_field_group') ):
+
+			acf_add_local_field_group(array (
+				'key' => 'group_563931a6e6559',
+				'title' => 'Github Settings',
+				'fields' => array (
+					array (
+						'key' => 'field_563931bfe4a0b',
+						'label' => 'Github Username',
+						'name' => 'github_username',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+						'readonly' => 0,
+						'disabled' => 0,
+					),
+					array (
+						'key' => 'field_563931f1e4a0c',
+						'label' => 'Repository Slug',
+						'name' => 'repository_slug',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+						'readonly' => 0,
+						'disabled' => 0,
+					),
+					array (
+						'key' => 'field_563931ffe4a0d',
+						'label' => 'Authorization Key',
+						'name' => 'authorization_key',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+						'readonly' => 0,
+						'disabled' => 0,
+					),
+				),
+				'location' => array (
+					array (
+						array (
+							'param' => 'options_page',
+							'operator' => '==',
+							'value' => 'acf-options-fruit-pack-settings',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+			));
+
+			endif;
 
 	}
 

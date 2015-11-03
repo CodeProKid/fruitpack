@@ -18,6 +18,13 @@ require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-admin.php' );
 require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack.php' );
 require_once( FRUITPACK__PLUGIN_DIR . 'save.php' );
 require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-json.php' );
+require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-updater.php' );
+
+$updater = new Fruitpack_updater(__FILE__);
+$updater->set_username( get_field( 'github_username', 'options' ) );
+$updater->set_repository( get_field( 'repository_slug', 'options' ) );
+$updater->authorize( get_field( 'authorization_key', 'options' ) );
+$updater->initialize();
 
 $activeModules = get_option( 'fruit-pack-active-modules' );
 
