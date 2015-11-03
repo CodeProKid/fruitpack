@@ -1,0 +1,32 @@
+.fruit-pack-module {
+	width: 22.5%;
+	float: left;
+	background: #e3e3e3;
+	text-align: center;
+	padding: 0;
+	margin-right: 2.5%;
+	transition: all 300ms;
+}
+
+.fruit-pack-module.active {
+	color: green;
+	box-shadow: inset 0 0 0 4px green;
+}
+
+.fruit-pack-module.active h2 {
+	color: green;
+}
+
+.fruit-pack-module:hover {
+	cursor: pointer;
+}
+
+.fruit-pack-module__inner {
+	padding: 20px;
+}
+
+.fruit-pack-module__inner .dashicons {
+	font-size: 80px;
+	width: 80px;
+	height: 80px;
+}
