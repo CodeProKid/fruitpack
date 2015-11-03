@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Fruit Pack
 Description: Framework for frupress boilerplate
-Version: 0.1-alpha
+Version: 0.2-alpha
 Author: Ryan Kanner
 Author URI: http:rkanner.com
 */
@@ -28,6 +28,8 @@ $updater->initialize();
 
 $activeModules = get_option( 'fruit-pack-active-modules' );
 
-foreach ( $activeModules as $folderName ) {
-	require_once( FRUITPACK__PLUGIN_DIR . 'modules/' . $folderName . '/index.php' );
+if ( $activeModules ){
+	foreach ( $activeModules as $folderName ) {
+		require_once( FRUITPACK__PLUGIN_DIR . 'modules/' . $folderName . '/index.php' );
+	}
 }
