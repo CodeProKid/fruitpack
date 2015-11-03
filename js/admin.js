@@ -1,6 +1,6 @@
 var Save = ( function($) {
 	var save = {
-		ajaxHandler: function(slug) {
+		ajaxHandler: function(slug, e) {
 			$.ajax({
 				type: 'GET',
 				data: {
@@ -10,9 +10,15 @@ var Save = ( function($) {
 				dataType: 'json',
 				url: ajaxurl,
 				beforeSend: function() {
-					$('.fruit-pack-module[data-slug='+slug+']').addClass('working');
+					$(e).addClass('working');
 				}, success: function() {
-					$('.fruit-pack-module[data-slug='+slug+']').removeClass('working').toggleClass('active');
+					$(e).removeClass('working').toggleClass('active');
+					if ( $(e).hasClass('active') ) {
+						var txt = 'Deactivate Module';
+					} else {
+						var txt = 'Activate Module';
+					}
+					$(e).find('.action-text').text(txt);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
           console.log( jqXHR + " :: " + textStatus + " :: " + errorThrown );
@@ -24,7 +30,7 @@ var Save = ( function($) {
 			$('.fruit-pack-module').on('click', function() {
 				if ( !$(this).hasClass('working') ) {
 					var slug = $(this).attr('data-slug');
-					self.ajaxHandler(slug);
+					self.ajaxHandler(slug, $(this));
 				}
 			});
 		},

@@ -29,6 +29,18 @@ class Fruitpack {
 					echo '<i class="dashicons ' . $pluginData['Icon'] . '"></i>';
 					echo '<p>' . $pluginData['Description'] . '</p>';
 				echo '</div>';
+				echo '<div class="fruit-pack-module__action ' . $class . '">';
+					echo '<p>'; 
+						echo '<i class="dashicons dashicons-update"></i>';
+						echo '<span class="action-text">';
+						if ( $class == 'active' ) {
+							echo 'Deactivate Module';
+						} else {
+							echo 'Activate Module';
+						}
+						echo '<span class="action-text">';
+					echo '</p>';
+				echo '</div>';
 			echo '</div>';
 		}
 

@@ -6,11 +6,26 @@
 	padding: 0;
 	margin-right: 2.5%;
 	transition: all 300ms;
+	position: relative;
+	overflow: hidden;
 }
 
 .fruit-pack-module.active {
 	color: green;
 	box-shadow: inset 0 0 0 4px green;
+}
+
+.fruit-pack-module.working .fruit-pack-module__action {
+	bottom: 0;
+}
+
+.fruit-pack-module.working .fruit-pack-module__action i {
+	-wekbit-animation: rotation 2s infinite linear;
+	animation: rotation 2s infinite linear;
+}
+
+.fruit-pack-module.active .fruit-pack-module__action {
+	background: red;
 }
 
 .fruit-pack-module.active h2 {
@@ -21,6 +36,10 @@
 	cursor: pointer;
 }
 
+.fruit-pack-module:hover .fruit-pack-module__action {
+	bottom: 0;
+}
+
 .fruit-pack-module__inner {
 	padding: 20px;
 }
@@ -29,4 +48,22 @@
 	font-size: 80px;
 	width: 80px;
 	height: 80px;
+}
+
+.fruit-pack-module__action {
+	background-color: green;
+	color: white;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: -50px;
+	transition: bottom 300ms;
+}
+
+.fruit-pack-module__action p {
+	display: inline-block;
+}
+
+.fruit-pack-module__action i {
+	margin-right: 5px;
 }
