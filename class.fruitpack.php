@@ -20,7 +20,7 @@ class Fruitpack {
 		foreach ( $modules as $module ) {
 			$pluginData = get_plugin_data( $module . '/index.php', 'false', 'false' );
 			$class = '';
-			if ( in_array($pluginData['Slug'], $activeModules ) ) {
+			if ( $activeModules && in_array( $pluginData['Slug'], $activeModules ) ) {
 				$class = 'active';
 			}
 			echo '<div class="fruit-pack-module ' . $class . '" data-slug="' . $pluginData['Slug'] . '">';
