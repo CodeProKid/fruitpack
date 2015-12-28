@@ -1,0 +1,13 @@
+.acf-icon-font-list .ico {
+  font-size: 50px;
+  display: block;
+  margin-top: 5px;
+}
+
+.acf-icon-font-list li {
+  text-align: center;
+}
+
+.acf-icon-font-list input[checked=checked] + i {
+  color: #0073aa;
+}
