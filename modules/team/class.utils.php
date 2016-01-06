@@ -2,7 +2,7 @@
 
 class FruitpackTeamUtils {
 	
-	public static function __construct() {
+	public function __construct() {
 
 		add_filter( 'archive_template', array( $this, 'load_archive_template' ) );
 		add_filter( 'single_template', array( $this, 'load_single_template' ) );
@@ -34,7 +34,7 @@ class FruitpackTeamUtils {
 			
 			global $post;
 			if ( $post->post_type == 'team' ) {
-				$single_template = dirname(__FILE__) . 'templates/single-team.php';
+				$single_template = dirname(__FILE__) . '/templates/single-team.php';
 			}
 
 		}
@@ -43,7 +43,7 @@ class FruitpackTeamUtils {
 
 	}
 
-	private function find_template( $templateName ) {
+	private static function find_template( $templateName ) {
 
 		$tempDest = get_stylesheet_directory() . '/' . $templateName;
 		
@@ -52,6 +52,22 @@ class FruitpackTeamUtils {
 		} else {
 			return false;
 		}
+
+	}
+
+	public static function build_grid_classes() {
+
+		$smallGridUnit = apply_filters( 'fp-team-small-grid', '2' );
+		$mediumGridUnit = apply_filters( 'fp-team-medium-grid', '3' );
+		$largeGridUnit = apply_filters( 'fp-team-large-grid', '4' );
+
+		$smallGrid = 'small-block-grid-' . $smallGridUnit;
+		$mediumGrid = 'medium-block-grid-' . $mediumGridUnit;
+		$largeGrid = 'large-block-grid-' . $largeGridUnit;
+
+		$classes = $smallGrid . ' ' . $mediumGrid . ' ' . $largeGrid . ' ' . 'fp-team-list';
+
+		return $classes;
 
 	}
 
