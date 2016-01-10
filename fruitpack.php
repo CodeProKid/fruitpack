@@ -16,7 +16,7 @@ define( 'FRUITPACK__JSON_FULL_PATH', FRUITPACK__JSON_SAVE_DIR . '/' . $fileName 
 
 require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-admin.php' );
 require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack.php' );
-require_once( FRUITPACK__PLUGIN_DIR . 'save.php' );
+require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-save.php' );
 require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-json.php' );
 require_once( FRUITPACK__PLUGIN_DIR . 'class.fruitpack-updater.php' );
 
