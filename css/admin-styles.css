@@ -20,10 +20,28 @@
 	text-align: center;
 	padding: 0;
 	margin-right: 2.5%;
+	margin-bottom: 2.5%;
 	transition: all 300ms;
 	position: relative;
 	overflow: hidden;
 }
+
+@media screen and (max-width: 767px) {
+	.fruit-pack-module {
+		width: 47.5%;
+	}
+	.fruit-pack-module-wrapper > .fruit-pack-module:nth-of-type(2n+1) {
+		clear: both;
+	}
+
+}
+
+@media screen and (min-width: 768px) {
+	.fruit-pack-module-wrapper > .fruit-pack-module:nth-of-type(4n+1) {
+		clear: both;
+	}
+}
+
 
 .fruit-pack-module.active {
 	color: green;
