@@ -28,8 +28,15 @@ $updater->initialize();
 
 $activeModules = get_option( 'fruit-pack-active-modules' );
 
+if ( ! function_exists( 'get_plugins' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+
 if ( $activeModules ){
-	foreach ( $activeModules as $folderName ) {
-		require_once( FRUITPACK__PLUGIN_DIR . 'modules/' . $folderName . '/index.php' );
+	foreach ( $activeModules as $module ) {
+		$moduleFile = FRUITPACK__PLUGIN_DIR . 'modules/' . $module['folder'] . '/' . $module['filename'];
+		if ( file_exists( $moduleFile) ) {
+			require_once( $moduleFile );
+		}
 	}
 }

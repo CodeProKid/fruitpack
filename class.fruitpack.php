@@ -17,17 +17,24 @@ class Fruitpack {
 		$modules = glob( FRUITPACK__PLUGIN_DIR . 'modules/*', GLOB_ONLYDIR );
 		$activeModules = get_option( 'fruit-pack-active-modules' );
 
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
 		foreach ( $modules as $module ) {
-			$pluginData = get_plugin_data( $module . '/index.php', 'false', 'false' );
+
+			$moduleFolder = basename($module);
+			$moduleData = get_plugins( '/' . basename(dirname(__FILE__)) . '/modules/' . basename( $module ) );
+			$moduleFile = key( $moduleData );
 			$class = '';
-			if ( $activeModules && in_array( $pluginData['Slug'], $activeModules ) ) {
+			if ( $activeModules && array_key_exists( $moduleData[$moduleFile]['Name'], $activeModules ) ) {
 				$class = 'active';
 			}
-			echo '<div class="fruit-pack-module ' . $class . '" data-slug="' . $pluginData['Slug'] . '">';
+			echo '<div class="fruit-pack-module ' . $class . '" data-folder="' . esc_attr( $moduleFolder ) . '" data-name="' . esc_attr( $moduleData[$moduleFile]['Name'] ) . '" data-filename="' . esc_attr( $moduleFile ) . '">';
 				echo '<div class="fruit-pack-module__inner">';
-					echo '<h2>' . $pluginData['Name'] . '</h2>';
-					echo '<i class="dashicons ' . $pluginData['Icon'] . '"></i>';
-					echo '<p>' . $pluginData['Description'] . '</p>';
+					echo '<h2>' . $moduleData[$moduleFile]['Name'] . '</h2>';
+					echo '<i class="dashicons ' . $moduleData[$moduleFile]['Icon'] . '"></i>';
+					echo '<p>' . $moduleData[$moduleFile]['Description'] . '</p>';
 				echo '</div>';
 				echo '<div class="fruit-pack-module__action ' . $class . '">';
 					echo '<p>'; 
@@ -38,7 +45,7 @@ class Fruitpack {
 						} else {
 							echo 'Activate Module';
 						}
-						echo '<span class="action-text">';
+						echo '</span>';
 					echo '</p>';
 				echo '</div>';
 			echo '</div>';

@@ -3,22 +3,28 @@ function save_fruitpack_options() {
 
 	if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
 
-		$slug = (isset($_GET['slug'])) ? $_GET['slug'] : null;
-		$optionName = 'fruit-pack-active-modules';
+		$folder = (isset($_GET['folder'])) ? $_GET['folder'] : '';
+		$file = (isset($_GET['filename'])) ? $_GET['filename'] : 'index.php';
+		$name = (isset($_GET['name'])) ? $_GET['name'] : null;
 
-		if ( get_option( $optionName ) !== false ) {
-			if ( $slug !== null ) {
+		$optionName = 'fruit-pack-active-modules';
+		if ( get_option( $optionName ) ) {
+
+			if ( $name !== null ) {
 				$data = get_option( $optionName );
-				if ( in_array( $slug, $data ) ) {
-					$key = array_search( $slug, $data);
-					unset($data[$key]);
+				if ( array_key_exists( $name, $data ) ) {
+					unset($data[$name]);
 				} else {
-					$data[] = $slug;
+					$data[$name] = array( 'filename' => $file, 'folder' => $folder );
 				}
 				update_option( $optionName, $data );
 			}
+
 		} else {
-			add_option( $optionName, array($slug) );
+
+			$data = array( $name => array( 'filename' => $file, 'folder' => $folder ) );
+			update_option( $optionName, $data );
+
 		}
 
 		die();

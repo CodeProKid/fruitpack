@@ -1,11 +1,13 @@
 var Save = ( function($) {
 	var save = {
-		ajaxHandler: function(slug, e) {
+		ajaxHandler: function(folder, filename, name, e) {
 			$.ajax({
 				type: 'GET',
 				data: {
 					action: 'save_fruitpack',
-					slug: slug,
+					folder: folder,
+					filename: filename,
+					name: name,
 				},
 				dataType: 'json',
 				url: ajaxurl,
@@ -30,8 +32,10 @@ var Save = ( function($) {
 			var self = this;
 			$('.fruit-pack-module').on('click', function() {
 				if ( !$(this).hasClass('working') ) {
-					var slug = $(this).attr('data-slug');
-					self.ajaxHandler(slug, $(this));
+					var folder = $(this).attr('data-folder');
+					var filename = $(this).attr('data-filename');
+					var name = $(this).attr('data-name');
+					self.ajaxHandler(folder, filename, name, $(this));
 				}
 			});
 		},
