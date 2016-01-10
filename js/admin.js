@@ -24,8 +24,8 @@ var Save = ( function($) {
 					$(e).find('.action-text').text(txt);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-          console.log( jqXHR + " :: " + textStatus + " :: " + errorThrown );
-        }
+          			console.log( jqXHR + " :: " + textStatus + " :: " + errorThrown );
+        		}
 			});
 		},
 		saveData: function() {
