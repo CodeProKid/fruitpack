@@ -57,7 +57,7 @@ class FruitpackTeamHooks {
 
 	public static function team_member_name() {
 
-		the_title( '<h3>', '</h3>' );
+		echo '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
 
 	}
 
