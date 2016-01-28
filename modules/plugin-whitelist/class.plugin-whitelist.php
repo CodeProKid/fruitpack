@@ -14,6 +14,7 @@ class FruitpackPluginWhitelist {
 			'Advanced Custom Fields Pro',
 			'Advanced Custom Fields',
 			'Jetpack',
+			'Jetpack by WordPress.com',
 			'Yoast SEO',
 			'The Events Calendar',
 			'Force Regenerate Thumbnails',
