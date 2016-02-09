@@ -58,17 +58,22 @@ if ( ! is_admin()){
 }
 
 add_filter('redirect_canonical','fp_detect_enumeration', 10,2);
-function fp_detect_enumeration ($redirect_url, $requested_url) {
-if (preg_match('/\?author(%00[0%]*)?=([0-9]*)(\/*)/', $requested_url)===1  | isset($_POST['author']) ) {
-     fp_kill_enumeration();
-   } else {
-     return $redirect_url;
-   }
+if ( ! function_exists( 'fp_detect_enumeration' ) ) {
+	function fp_detect_enumeration ($redirect_url, $requested_url) {
+		if (preg_match('/\?author(%00[0%]*)?=([0-9]*)(\/*)/', $requested_url)===1  | isset($_POST['author']) ) {
+			fp_kill_enumeration();
+		} else {
+			return $redirect_url;
+		}
+	}
 }
 
-function fp_kill_enumeration() {
-     openlog('wordpress('.$_SERVER['HTTP_HOST'].')',LOG_NDELAY|LOG_PID,LOG_AUTH);
-     syslog(LOG_INFO,"Attempted user enumeration from {$_SERVER['REMOTE_ADDR']}");
-     closelog();
-     wp_die('forbidden');
+if ( ! function_exists( 'fp_kill_enumeration' ) ) {
+	function fp_kill_enumeration() {
+		openlog('wordpress('.$_SERVER['HTTP_HOST'].')',LOG_NDELAY|LOG_PID,LOG_AUTH);
+		syslog(LOG_INFO,"Attempted user enumeration from {$_SERVER['REMOTE_ADDR']}");
+		closelog();
+		wp_die('forbidden');
+	}
 }
+
