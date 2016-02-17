@@ -3,7 +3,7 @@ class FruitpackArchiveMeta {
 
 	public function __construct() {
 		self::add_options_page();
-		add_action( 'init', array( $this, 'register_fields' ) );
+		add_action( 'init', array( $this, 'register_fields' ), 999 );
 		add_filter( 'fp_archive_meta_fields', array( $this, 'add_title_field' ), 10, 3 );
 		add_filter( 'fp_archive_meta_fields', array( $this, 'add_content_field' ), 20, 3 );
 		add_filter( 'fp_archive_meta_fields', array( $this, 'add_image_field' ), 30, 3 );
