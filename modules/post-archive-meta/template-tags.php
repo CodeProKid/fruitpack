@@ -20,7 +20,7 @@ function fp_get_archive_field( $pt, $field ) {
 
 function fp_get_archive_title( $pt ) {
 
-	$title = fp_get_archive_field( $pt, $pt . '_title' );
+	$title = fp_get_archive_field( $pt, '_title' );
 
 	if ( ! $title ) {
 		$title = get_the_archive_title();
@@ -32,7 +32,7 @@ function fp_get_archive_title( $pt ) {
 
 function fp_get_archive_content( $pt ) {
 
-	$content = fp_get_archive_field( $pt, $pt . '_content' );
+	$content = fp_get_archive_field( $pt, '_content' );
 	return $content;
 
 }
@@ -40,7 +40,7 @@ function fp_get_archive_content( $pt ) {
 function fp_get_archive_image( $pt, $size = 'large' ) {
 
 	$heroArr = array();
-	$heroImg = fp_get_archive_field( $pt, $pt . '_hero_image' );
+	$heroImg = fp_get_archive_field( $pt, '_hero_image' );
 	if ( $heroImg ) {
 		$heroArr['alt'] = $heroImg['alt'];
 		$heroArr['title'] = $heroImg['title'];
