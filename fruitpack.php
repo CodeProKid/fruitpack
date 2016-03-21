@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Fruit Pack
 Description: Framework for frupress boilerplate
-Version: 0.6-alpha
+Version: 0.6.2-alpha
 Author: Ryan Kanner
 Author URI: http:rkanner.com
 */
